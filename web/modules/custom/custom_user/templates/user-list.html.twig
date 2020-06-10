@@ -1,0 +1,13 @@
+<h4> {{ title }} </h4>
+
+<table>
+<tr>
+<th> id</th>
+<th> username</th>
+</tr>
+<tr>
+{% for user in users %}
+	<td> {{ user }}</td>
+{% endfor %}
+</tr>
+</table>

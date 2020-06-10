@@ -1,0 +1,10 @@
+name: Custom Default
+description: Provides a custom module
+type: module
+core: 8.x
+
+dependencies:
+  - drupal:links
+  - drupal:views
+  - paragraphs:paragraphs
+  - webform:webform

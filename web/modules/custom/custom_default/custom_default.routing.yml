@@ -1,0 +1,17 @@
+custom_default.article_list:
+  path: '/custom_default/articles'
+  defaults:
+    _controller: '\Drupal\custom_default\Controller\ArticleController:page'
+    _title: 'custom default articles'
+  requirements:
+    _permission: 'access content'
+
+custom_default.default_form:
+  path: '/admin/config/custom_default/default'
+  defaults:
+    _form: '\Drupal\custom_default\Form\DefaultForm'
+    _title: 'custom default form'
+  requirements:
+    _permission: 'generate lorem ipsum'
+
+

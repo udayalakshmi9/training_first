@@ -1,0 +1,9 @@
+name: Custom Form
+description: Provides a custom module
+type: module
+core: 8.x
+
+dependencies:
+  - drupal:views
+  - paragraphs:paragraphs
+  - webform:webform

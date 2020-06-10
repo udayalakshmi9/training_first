@@ -1,0 +1,6 @@
+custom_user.user:
+  path: '/custom_user/{user}'
+  defaults: 
+    _controller: '\Drupal\custom_user\Controller\CustomuserController::content' 
+  requirements: 
+    _permission: 'access content'

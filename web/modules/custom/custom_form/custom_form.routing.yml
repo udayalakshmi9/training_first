@@ -1,0 +1,17 @@
+custom_form.article_list:
+  path: '/custom_form/form'
+  defaults:
+    _controller: '\Drupal\custom_form\Controller\ArticleController:page'
+    _title: 'custom form '
+  requirements:
+    _permission: 'access content'
+
+custom_form.default_form:
+  path: '/custom_form/default-form'
+  defaults:
+    _form: '\Drupal\custom_form\Form\DefaultForm'
+    _title: 'custom default form'
+  requirements:
+    _permission: 'generate lorem ipsum'
+
+
