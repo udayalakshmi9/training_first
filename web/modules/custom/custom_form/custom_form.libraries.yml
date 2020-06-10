@@ -1,0 +1,8 @@
+webform.admin:
+  version: VERSION
+  css:
+    theme:
+      css/webform.admin.css: {}
+  js: {}
+  dependencies:
+    - js/webform.admin.js

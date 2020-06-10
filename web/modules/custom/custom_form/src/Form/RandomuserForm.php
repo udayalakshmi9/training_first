@@ -82,4 +82,12 @@ public function randomUsernameCallback(array &$form, FormStateInterface $form_st
   // Return the AjaxResponse Object.
   return $ajax_response;
 }
+ public function submitForm(array &$form, FormStateInterface $form_state) {
+    /*
+     * This would normally be replaced by code that actually does something
+     * with the title.
+     */
+    $title = $form_state->getValue('title');
+    $this->messenger()->addMessage($this->t('You specified a title of %title.', ['%title' => $title]));
+  }
 }
