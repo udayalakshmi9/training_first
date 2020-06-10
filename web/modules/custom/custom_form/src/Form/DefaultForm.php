@@ -23,7 +23,7 @@ class DefaultForm extends FormBase {
 
     $form['description'] = [
       '#type' => 'item',
-      '#markup' => $this->t('This example shows the use of all input-types.'),
+      '#markup' => $this->t(' custom form with all type of fields.'),
     ];
 
     // CheckBoxes.

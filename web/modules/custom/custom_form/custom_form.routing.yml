@@ -13,5 +13,11 @@ custom_form.default_form:
     _title: 'custom default form'
   requirements:
     _permission: 'generate lorem ipsum'
-
+custom_form.ajax_form:
+  path: '/custom_form/ajax-form'
+  defaults:
+    _form: '\Drupal\custom_form\Form\AjaxColorForm'
+    _title: 'custom ajax form'
+  requirements:
+    _permission: 'generate lorem ipsum'
 
