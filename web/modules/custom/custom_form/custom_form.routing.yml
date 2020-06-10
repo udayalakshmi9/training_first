@@ -20,4 +20,10 @@ custom_form.ajax_form:
     _title: 'custom ajax form'
   requirements:
     _permission: 'generate lorem ipsum'
-
+custom_form.Randomuser_form:
+  path: '/custom_form/randomuser-form'
+  defaults:
+    _form: '\Drupal\custom_form\Form\RandomuserForm'
+    _title: 'custom default form'
+  requirements:
+    _permission: 'generate lorem ipsum'
