@@ -1,0 +1,30 @@
+custom_register.register:
+  path: '/custom/register'
+  defaults:
+    _form: '\Drupal\custom_register\Form\RegisterForm'
+    _title: 'custom register form'
+  requirements:
+    _permission: 'generate lorem ipsum'
+custom_register.display:
+  path: '/custom_register/display/{user}'
+  defaults:
+    _controller: '\Drupal\custom_register\Controller\CustomregisterController::display'
+    _title: 'display'
+  requirements:
+    _permission: 'generate lorem ipsum'
+custom_register.change_form:
+  path: '/custom/change'
+  defaults:
+    _form: '\Drupal\custom_register\Form\changeForm'
+    _title: 'ChangeForm'
+  requirements:
+    _permission: 'generate lorem ipsum'
+    
+custom_register.edit:
+  path: '/custom_register/edit/{user}'
+  defaults:
+    _controller: '\Drupal\custom_register\Controller\CustomregisterController::edit'
+    _title: 'edit'
+  requirements:
+    _permission: 'generate lorem ipsum'
+    

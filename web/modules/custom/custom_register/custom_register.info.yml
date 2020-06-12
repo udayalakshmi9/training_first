@@ -1,0 +1,4 @@
+name: custom Register Form
+description: Provides a custom module
+type: module
+core: 8.x

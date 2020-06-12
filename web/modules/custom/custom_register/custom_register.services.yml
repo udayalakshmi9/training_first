@@ -1,0 +1,4 @@
+services:
+  custom_register.register:
+    class: Drupal\custom_register\Services\RegisterService
+    arguments: ['@config.factory']

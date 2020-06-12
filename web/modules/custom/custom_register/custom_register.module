@@ -1,0 +1,13 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function custom_register_theme($existing, $type, $theme, $path) {
+  return [
+    'user_list' => [
+      'variables' => array('users' => array(),'title'=>''),
+    ],
+  ];
+}
+
+
