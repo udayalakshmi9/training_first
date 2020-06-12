@@ -64,7 +64,7 @@ class RegisterForm extends ConfigFormBase {
       if (empty($form_state->getValue('username'))) {
         $form_state->setErrorByName('username', $this->t('enter username.'));
       }
-	  elseif (empty($form_state->getValue('password'))) {
+	  if (empty($form_state->getValue('password'))) {
         $form_state->setErrorByName('password', $this->t('enter password.'));
       }
 	   if (empty($form_state->getValue('email'))) {
