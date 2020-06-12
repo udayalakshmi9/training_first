@@ -92,10 +92,25 @@ class ChangeForm extends ConfigFormBase {
         '#value' => $this->t('Submit'),
       ],
     ];
-
+//$form['field_ref_to_xxxxxx']['uid']['#attributes']['readonly'] = TRUE;
     return $form;
   }
-  
+   public function validateForm(array &$form, FormStateInterface $form_state) {
+
+      if (empty($form_state->getValue('username'))) {
+        $form_state->setErrorByName('username', $this->t('enter username.'));
+      }
+	  elseif (empty($form_state->getValue('password'))) {
+        $form_state->setErrorByName('password', $this->t('enter password.'));
+      }
+	   if (empty($form_state->getValue('email'))) {
+        $form_state->setErrorByName('email', $this->t('enter email.'));
+      }
+	   if (empty($form_state->getValue('uid'))) {
+        $form_state->setErrorByName('username', $this->t('enter uid.'));
+      }
+
+    }
   
   public function submitForm(array &$form, FormStateInterface $form_state) {
 	   

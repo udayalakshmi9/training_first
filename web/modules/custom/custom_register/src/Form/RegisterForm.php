@@ -59,7 +59,20 @@ class RegisterForm extends ConfigFormBase {
         'custom_register.register',
         ];
     }
+ public function validateForm(array &$form, FormStateInterface $form_state) {
 
+      if (empty($form_state->getValue('username'))) {
+        $form_state->setErrorByName('username', $this->t('enter username.'));
+      }
+	  elseif (empty($form_state->getValue('password'))) {
+        $form_state->setErrorByName('password', $this->t('enter password.'));
+      }
+	   if (empty($form_state->getValue('email'))) {
+        $form_state->setErrorByName('email', $this->t('enter email.'));
+      }
+	   
+
+    }
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Find out what was submitted.
     $values = $form_state->getValues();
