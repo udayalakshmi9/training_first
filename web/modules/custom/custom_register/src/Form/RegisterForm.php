@@ -100,25 +100,26 @@ class RegisterForm extends ConfigFormBase {
     
       }
     }
-	  foreach ($values as $key => $value) {
-	  if ($key=='username' || $key== 'email' || $key =='password')
-	  {
-		  array_push($a, $key);
-		  array_push($b, $value);
-	  }
-	  }
-	  $uuid_service = \Drupal::service('uuid');
-$uuid = $uuid_service->generate();
-	//$myuid = uniqid('gfg');
-	$c = array_combine($a, $b);
-	$d=array('id'=>'');
-	
-	$d=array($uuid=>
-		$c);
+		foreach ($values as $key => $value) {
+			if ($key=='username' || $key== 'email' || $key =='password')
+			{
+			  array_push($a, $key);
+			  array_push($b, $value);
+			}
+		}
+		  $uuid_service = \Drupal::service('uuid');
+		  $uuid = $uuid_service->generate();
+			//$myuid = uniqid('gfg');
+			$c = array_combine($a, $b);
+			$d=array('id'=>'');
+
+			$d=array($uuid=>
+			$c);
 	
 	
 	//$d= array($uuid[$c]);
 	$config = \Drupal::service('custom_register.register')->savetocinfig($d);
+	 drupal_set_message("succesfully inserted");
   }
 
 }

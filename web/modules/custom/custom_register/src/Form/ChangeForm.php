@@ -140,7 +140,7 @@ class ChangeForm extends ConfigFormBase {
 		
 		
 		$config = \Drupal::service('custom_register.register')->savetoeditcinfig($d);	
-			
+		  drupal_set_message("succesfully updated");	
      }
  
 }
