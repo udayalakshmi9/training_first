@@ -13,80 +13,75 @@ class CustomregisterController  {
 
 	public $user;
 	public function display($user) {
-			/**return [
-			  '#type' => 'markup',
-			  '#markup' => $this->t('Implement method: display with parameter(s): $name'),
-			];*/
-			//create table header
-		  
+			
 		$results = \Drupal::service('config.factory')->getEditable('custom_register.settings')->get();
-				
-			
+
+
 		foreach($results as $k=>$data){
-			
+
 			if(is_array($results[$k]))
 			{
-			  
+
 				$edit   = Url::fromUserInput('/custom_form/form/change?uid='.$k);
 
-			
+
 				 $rows[$k] = array(
-				
+
 					'username' => $results[$k]['username'],
 					'password' =>$results[$k]['password'],
 					'email' => $results[$k]['email'],
-					
 
-					 
+
+
 					 \Drupal::l('Edit', $edit),
 				);
 			}
-		   
+
 		}
-		
-			
+
+
 			return array(
 			'#theme'=>'user_list',
 			'#users'=>$rows[$user],
 			'#uid'=>$user,
-			
+
 			);
-		
+
 
 	}
 
 
-	
-	
+
+
 	public function edit($user)
 	{
 		$results = \Drupal::service('config.factory')->getEditable('custom_register.settings')->get();
-		
-	
+
+
 		foreach($results as $k=>$data){
-			
+
 			if(is_array($results[$k]))
 			{
-			
-			 
-				  
+
+
+
 				$edit   = Url::fromUserInput('/custom_form/form/change?uid='.$k);
 
 			  //print the data from table
 					 $rows[$k] = array(
-					
+
 						'username' => $results[$k]['username'],
 						'password' =>$results[$k]['password'],
 						'email' => $results[$k]['email'],
-						
 
-						 
+
+
 						 \Drupal::l('Edit', $edit),
 					);
 			}
-		   
+
 		}
-		
+
 		 $myForm =  \Drupal::formBuilder()->getForm('Drupal\custom_register\Form\ChangeForm');
         $renderer = \Drupal::service('renderer');
         $myFormHtml = $renderer->render($myForm);

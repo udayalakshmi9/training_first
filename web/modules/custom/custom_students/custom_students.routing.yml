@@ -1,0 +1,14 @@
+custom_students.enroll_form:
+  path: '/student/enroll-forms'
+  defaults:
+    _form: '\Drupal\custom_students\Form\EnrollsForm'
+    _title: 'custom default form'
+  requirements:
+    _permission: 'generate lorem ipsum'
+custom_students.display:
+  path: '/teacher/display/{user}'
+  defaults:
+    _controller: '\Drupal\custom_students\Controller\CustomstudentController::display'
+    _title: 'display'
+  requirements:
+    _permission: 'generate lorem ipsum'

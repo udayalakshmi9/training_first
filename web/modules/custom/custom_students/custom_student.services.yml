@@ -1,0 +1,4 @@
+services:
+  custom_student.enroll:
+    class: Drupal\custom_student\Services\EnrollService
+    arguments: ['@config.factory']

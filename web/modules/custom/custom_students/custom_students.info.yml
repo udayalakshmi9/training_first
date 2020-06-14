@@ -1,0 +1,4 @@
+name: Custom students
+description: Provides a custom module
+type: module
+core: 8.x

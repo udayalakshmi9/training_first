@@ -1,0 +1,11 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function custom_student_theme($existing, $type, $theme, $path) {
+  return [
+    'student_list' => [
+     'variables' => array('users' => array(),'title'=>'studentlist'),
+    ],
+  ];
+}
