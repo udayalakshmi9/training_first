@@ -1,0 +1,6 @@
+name: Database Student 
+type: module
+description: 'Demonstrates how to use the database API: DBTNG.'
+package: Database student
+core: 8.x
+

@@ -44,7 +44,7 @@ class ChangeForm extends ConfigFormBase {
 		$record = \Drupal::service('config.factory')->getEditable('custom_student.settings')->get($uid);
 		}
 	$config = \Drupal::service('config.factory')->getEditable('custom_student.settings');
-
+$edit   = Url::fromUserInput('/student/edit/'.$k);
 
 	$form['studentname'] = [
 		'#type' => 'textfield',
@@ -75,7 +75,7 @@ class ChangeForm extends ConfigFormBase {
    
 
 	$form['uid'] = [
-       '#type' => 'textfield',
+       '#type' => 'hidden',
       '#title' => $this->t('uid'),
       '#description' => $this->t('uid, #type = textfield'),
 	   '#default_value' => $uid,

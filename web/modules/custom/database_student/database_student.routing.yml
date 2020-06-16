@@ -1,0 +1,39 @@
+database_student.generate_entry_list:
+  path: '/teacher/studentdashboard'
+  defaults:
+    _title: 'Dashboard of students'
+    _controller: '\Drupal\database_student\Controller\DatabaseStudentController::entryList'
+  requirements:
+    _permission: 'access content'
+
+database_student.list:
+  path: '/studentlist'
+  defaults:
+    _title: 'List'
+    _controller: '\Drupal\database_student\Controller\DatabaseStudentController::entryList'
+  requirements:
+    _permission: 'access content'
+
+database_student.add:
+  path: '/enroll'
+  defaults:
+    _title: 'Add entry'
+    _form: '\Drupal\database_student\Form\DatabasestudentAddForm'
+  requirements:
+    _permission: 'access content'
+
+database_student.update:
+  path: '/update'
+  defaults:
+    _title: 'Update entry'
+    _form: '\Drupal\database_student\Form\DatabaseStudentUpdateForm'
+  requirements:
+    _permission: 'access content'
+
+database_student.advanced:
+  path: '/advanced'
+  defaults:
+    _title: 'Advanced list'
+    _controller: '\Drupal\database_student\Controller\DatabaseStudentController::entryAdvancedList'
+  requirements:
+    _permission: 'access content'

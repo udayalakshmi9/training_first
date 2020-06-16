@@ -1,0 +1,25 @@
+database_student.description:
+  title: DBTNG Example
+  route_name: database_student.generate_entry_list
+  expanded: TRUE
+
+database_student.list:
+  title: List
+  route_name: database_student.list
+  weight: 0
+  parent: database_student.description
+database_student.add:
+  title: Add entry
+  route_name: database_student.add
+  weight: 1
+  parent: database_student.description
+database_student.update:
+  title: Update entry
+  route_name: database_student.update
+  weight: 2
+  parent: database_student.description
+database_student.advanced:
+  title: Advanced list
+  route_name: database_student.advanced
+  weight: 3
+  parent: database_student.description

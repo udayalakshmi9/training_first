@@ -1,0 +1,97 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the dbtng_example module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Creates some default entries on this module custom table.
+ *
+ * @see hook_install()
+ *
+ * @ingroup dbtng_example
+ */
+function database_student__install() {
+  // Insert some example data into our schema.
+  $entries = 
+    [
+      'studentname' => 'John',
+      'studentno' => '14',
+      'status'=>'0',
+	  'chapter'=>'chaptersenglishs4',
+	  'uid'=>13
+    
+  ];
+
+  $connection = \Drupal::database();
+  foreach ($entries as $entry) {
+    $connection->insert('student')->fields($entry)->execute();
+  }
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup dbtng_example
+ */
+function dbtng_example_schema() {
+  $schema['student'] = [
+    'description' => 'Stores example person entries for demonstration purposes.',
+    'fields' => [
+      'pid' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique person ID.',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Creator user's {users}.uid",
+      ],
+      'studentname' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the person.',
+      ],
+	  'studentno' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Creator user's {users}.studentno",
+      ],
+      'chapter' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'chapter for the person.',
+      ],
+      'status' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => "access request",
+      ],
+    ],
+    'primary key' => ['pid'],
+    'indexes' => [
+      'studentname' => ['studentname'],
+      'studentno' => ['studentno'],
+      'status' => ['status'],
+	  'uid' => ['uid'],
+	  'chapter' => ['capter'],
+    ],
+  ];
+
+  return $schema;
+}
