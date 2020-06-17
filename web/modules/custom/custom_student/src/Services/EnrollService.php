@@ -72,7 +72,7 @@ $account->removeRole('Student');
 			$v=$v;
 		}
 
-
+$account->save();
 			$config->set($k,$v)->save();
 
 
