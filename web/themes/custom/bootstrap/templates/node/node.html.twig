@@ -80,7 +80,7 @@
   {{ title_prefix }}
   {% if label and not page %}
     <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      <a href="{{ url }}" rel="bookmark">{{"training_demo|t"}}{{ label }}</a>
     </h2>
   {% endif %}
   {{ title_suffix }}
@@ -97,6 +97,14 @@
 
   <div{{ content_attributes.addClass('content') }}>
     {{ content }}
+	12345
+	
+ {{ drupal_image('/web/sites/default/files/2020-06/c-logo-4.png') }}
+{{ drupal_view('englishschaptersview') }}
+
   </div>
 
 </article>
+
+
+

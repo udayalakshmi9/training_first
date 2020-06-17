@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\dbtng_example;
+namespace Drupal\database_student;
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Messenger\MessengerInterface;
