@@ -69,6 +69,20 @@ class DatabaseStudentAddForm implements FormInterface, ContainerInjectionInterfa
   public function getFormId() {
     return 'database_student_add_form';
   }
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+
+      if (empty($form_state->getValue('studentname'))) {
+        $form_state->setErrorByName('studentname', $this->t('enter studentname.'));
+      }
+	  if (empty($form_state->getValue('studentno'))) {
+        $form_state->setErrorByName('studentno', $this->t('enter password.'));
+      }
+	   if (empty($form_state->getValue('chapter'))) {
+        $form_state->setErrorByName('chapter', $this->t('enter chapter.'));
+      }
+	   
+
+    }
 
   /**
    * {@inheritdoc}
