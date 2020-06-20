@@ -5,7 +5,9 @@ namespace Drupal\database_student\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\database_student\DatabaseStudentRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
+use Drupal\Core\Url;
+use Drupal\Core\Render\Markup;
+use Drupal\user\Entity\User;
 /**
  * Controller for DBTNG Example.
  *
@@ -51,29 +53,87 @@ class DatabaseStudentController extends ControllerBase {
 
     $rows = [];
     $headers = [
-      $this->t('Id'),
+      $this->t('pid'),
       $this->t('uid'),
       $this->t('studentname'),
       $this->t('studentno'),
       $this->t('chapter'),
-	   $this->t('status'),
+	   
+	    $this->t('status'),
+		$this->t('link'),
     ];
+//print_r($this->repository);exit;
 
-    foreach ($entries = $this->repository->load() as $entry) {
-      // Sanitize each entry.
-      $rows[] = array_map('Drupal\Component\Utility\Html::escape', (array) $entry);
+$results = $this->repository->load();
+//echo"<pre>";//print_r($entries);exit;
+   
+	
+	
+	$k1=array();
+   $output=array();
+
+    foreach($results as $k=>$data){
+
+      
+//print_r($results[$k]);exit;
+      if($results[$k]->status ==1)
+      {
+		  
+		  $edit   = Url::fromUserInput('/update/'.$results[$k]->uid);
+          $output[] = [
+		  'pid' => $results[$k]->pid,
+		  'uid' => $results[$k]->uid,
+          'studentname' => $results[$k]->studentname,     // 'userid' was the key used in the header
+          'studentno' => $results[$k]->studentno, // 'Username' was the key used in the header
+          'chapter' => $results[$k]->chapter,
+		  
+          'status' => 'Granted',
+          \Drupal::l('Edit', $edit),
+
+
+
+
+         ];
+      }
+      if($results[$k]->status ==0)
+      {
+		  
+		 $edit   = Url::fromUserInput('/update/'.$results[$k]->uid);
+          $output[] = [
+          'pid' => $results[$k]->pid,
+		  'uid' => $results[$k]->uid,
+          'studentname' => $results[$k]->studentname,     // 'userid' was the key used in the header
+          'studentno' => $results[$k]->studentno, // 'Username' was the key used in the header
+          'chapter' => $results[$k]->chapter,
+		  
+          'status' => 'Notgranted',
+          \Drupal::l('Edit', $edit),
+
+
+
+
+         ];
+      }
+
+
+
+//print_r($output);exit;
+
+        array_push($k1,$output);
+      //display data in site
+
     }
+//print_r($k1);exit;
     $content['table'] = [
-      '#type' => 'table',
-      '#header' => $headers,
-      '#rows' => $rows,
-      '#empty' => $this->t('No entries available.'),
-    ];
-    // Don't cache this page.
-    $content['#cache']['max-age'] = 0;
+              '#type' => 'table',
+              '#header' => $headers,
+              '#rows' => $output,
+              '#empty' => t('No users found'),
+          ];
+          return $content;
 
-    return $content;
   }
+  //}
 
   /**
    * Render a filtered list of entries in the database.
@@ -86,7 +146,7 @@ class DatabaseStudentController extends ControllerBase {
     ];
 
     $headers = [
-      $this->t('Id'),
+      $this->t('pid'),
       $this->t('uid'),
       $this->t('studentname'),
       $this->t('studentno'),
@@ -97,7 +157,7 @@ class DatabaseStudentController extends ControllerBase {
     $rows = [];
     foreach ($entries = $this->repository->advancedLoad() as $entry) {
       // Sanitize each entry.
-      $rows[] = array_map('Drupal\Component\Utility\Html::escape', $entry);
+      $rows[] = array_map('Drupal\Component\Utility\Html::escape', $entries);
     }
     $content['table'] = [
       '#type' => 'table',
@@ -107,8 +167,27 @@ class DatabaseStudentController extends ControllerBase {
       '#empty' => $this->t('No entries available.'),
     ];
     // Don't cache this page.
-    $content['#cache']['max-age'] = 0;
+    //$content['#cache']['max-age'] = 0;
     return $content;
   }
+  
+  public function edit($user)
+	{
+		//$results = \Drupal::service('config.factory')->getEditable('custom_student.settings')->get();
+
+
+		
+		 $myForm =  \Drupal::formBuilder()->getForm('Drupal\database_student\Form\DatabasestudentUpdateForm');
+        $renderer = \Drupal::service('renderer');
+        $myFormHtml = $renderer->render($myForm);
+
+        return [
+            '#markup' => Markup::create("
+                <h2>Student access edit form</h2>
+                {$myFormHtml}
+
+            ")
+			];
+	}
 
 }

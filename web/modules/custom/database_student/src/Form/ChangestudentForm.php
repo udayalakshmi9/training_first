@@ -4,19 +4,15 @@ namespace Drupal\database_student\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-
+use Drupal\database_student\DbtngExampleRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Messenger\MessengerTrait;
-use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\database_student\DatabaseStudentRepository;
 
 /**
  * Sample UI to update a record.
  *
  * @ingroup database_student
  */
-class DatabaseStudentUpdateForm extends FormBase {
+class ChangestudentForm extends FormBase {
 
   /**
    * Our database repository service.
@@ -29,7 +25,7 @@ class DatabaseStudentUpdateForm extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'database_student_update_form';
+    return 'database_student_change_form';
   }
 
   /**
@@ -63,7 +59,7 @@ class DatabaseStudentUpdateForm extends FormBase {
       '#markup' => $this->t('Demonstrates a database update operation.'),
     ];
     // Query for items to display.
-    $entries = $this->repository->load(); //print_r($entries);exit;
+    $entries = $this->repository->load();
     // Tell the user if there is nothing to display.
     if (empty($entries)) {
       $form['no_values'] = [
@@ -81,7 +77,6 @@ class DatabaseStudentUpdateForm extends FormBase {
         '@studentno' => $entry->studentno,
         '@status' => $entry->status,
 		'@chapter' => $entry->chapter,
-
       ]);
       $keyed_entries[$entry->pid] = $entry;
     }
@@ -132,13 +127,6 @@ class DatabaseStudentUpdateForm extends FormBase {
       '#size' => 4,
       '#default_value' => $default_entry->chapter,
       '#description' => $this->t('Values greater than 127 will cause an exception'),
-    ];
-	 $form['uid'] = [
-      '#type' => 'hidden',
-      '#title' => $this->t('Updated chapter'),
-      '#size' => 4,
-      '#default_value' => $default_entry->uid,
-      
     ];
 
     $form['submit'] = [
@@ -199,23 +187,9 @@ class DatabaseStudentUpdateForm extends FormBase {
       'studentno' => $form_state->getValue('studentno'),
       'status' => $form_state->getValue('status'),
 	  'chapter' => $form_state->getValue('chapter'),
-      'uid' => $form_state->getValue('uid'),
+      'uid' => $account->id(),
     ];
-	//print_r($entry);exit;
     $count = $this->repository->update($entry);
-	$accountuser = \Drupal\user\Entity\User::load($form_state->getValue('uid'));
-	//print_r($accountuser);exit;
-	if($form_state->getValue('status') ==1)
-	{
-		$accountuser->addRole('Student');
-	}
-	if($form_state->getValue('status') ==0)
-	{
-		$accountuser->removeRole('Student');
-	}
-	$accountuser->save();
-	
-	//print_r($accountuser->getRoles());exit;
     $this->messenger()->addMessage($this->t('Updated entry @entry (@count row updated)', [
       '@count' => $count,
       '@entry' => print_r($entry, TRUE),

@@ -14,22 +14,22 @@
  *
  * @ingroup dbtng_example
  */
-function database_student__install() {
+function database_student_install() {
   // Insert some example data into our schema.
   $entries = 
-    [
-      'studentname' => 'John',
-      'studentno' => '14',
+   array(
+      'studentname' => 'udayasss',
+      'studentno' => '5',
       'status'=>'0',
-	  'chapter'=>'chaptersenglishs4',
-	  'uid'=>13
+	  'chapter'=>'chap8',
+	  'uid'=>12
     
-  ];
+  );
 
   $connection = \Drupal::database();
-  foreach ($entries as $entry) {
-    $connection->insert('student')->fields($entry)->execute();
-  }
+  //foreach ($entries as $entry) {
+    $connection->insert('student')->fields($entries)->execute();
+ // }
 }
 
 /**
@@ -41,7 +41,7 @@ function database_student__install() {
  *
  * @ingroup dbtng_example
  */
-function dbtng_example_schema() {
+function database_student_schema() {
   $schema['student'] = [
     'description' => 'Stores example person entries for demonstration purposes.',
     'fields' => [
@@ -89,7 +89,7 @@ function dbtng_example_schema() {
       'studentno' => ['studentno'],
       'status' => ['status'],
 	  'uid' => ['uid'],
-	  'chapter' => ['capter'],
+	  'chapter' => ['chapter'],
     ],
   ];
 

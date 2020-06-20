@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\database_student\DbtngExampleRepository;
+use Drupal\database_student\DatabaseStudentRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -80,7 +80,7 @@ class DatabaseStudentAddForm implements FormInterface, ContainerInjectionInterfa
 	   if (empty($form_state->getValue('chapter'))) {
         $form_state->setErrorByName('chapter', $this->t('enter chapter.'));
       }
-	   
+	  
 
     }
 

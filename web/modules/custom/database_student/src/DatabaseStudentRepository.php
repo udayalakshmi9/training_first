@@ -94,6 +94,7 @@ class DatabaseStudentRepository {
    *   The number of updated rows.
    */
   public function update(array $entry) {
+	  //print_r($entry);exit;
     try {
       // Connection->update()...->execute() returns the number of rows updated.
       $count = $this->connection->update('student')
@@ -110,6 +111,8 @@ class DatabaseStudentRepository {
     }
     return $count ?? 0;
   }
+  
+ 
 
   /**
    * Delete an entry from the database.
@@ -199,9 +202,10 @@ class DatabaseStudentRepository {
   public function load(array $entry = []) {
     // Read all the fields from the dbtng_example table.
     $select = $this->connection
-      ->select('student')
+      ->select('student',t)
       // Add all the fields into our select query.
-      ->fields('dbtng_example');
+      ->fields(t);
+	 
 
     // Add each field and value as a condition to this query.
     foreach ($entry as $field => $value) {
