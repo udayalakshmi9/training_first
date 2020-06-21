@@ -23,7 +23,7 @@ database_student.add:
     _permission: 'access content'
 
 database_student.update:
-  path: '/update/{user}'
+  path: '/update'
   defaults:
     _title: 'Update entry'
     _form: '\Drupal\database_student\Form\DatabasestudentUpdateForm'
@@ -37,11 +37,3 @@ database_student.advanced:
     _controller: '\Drupal\database_student\Controller\DatabaseStudentController::entryAdvancedList'
   requirements:
     _permission: 'access content'
-    
-database_student.edit:
-  path: '/updates/{user}'
-  defaults:
-    _controller: '\Drupal\database_student\Controller\DatabasestudentController::edit'
-    _title: 'Student Access Form'
-  requirements:
-    _permission: 'generate access content'

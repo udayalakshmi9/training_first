@@ -108,6 +108,11 @@ class DatabaseStudentAddForm implements FormInterface, ContainerInjectionInterfa
       '#title' => $this->t('studentno'),
       '#size' => 15,
     ];
+	  $form['add']['chapter'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('chapter'),
+      '#size' => 15,
+    ];
     $form['add']['status'] = [
       '#type' => 'textfield',
       '#title' => $this->t('status'),

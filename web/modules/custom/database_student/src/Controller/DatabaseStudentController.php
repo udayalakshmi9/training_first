@@ -21,6 +21,7 @@ class DatabaseStudentController extends ControllerBase {
    * @var \Drupal\database_student\DatabaseStudentRepository
    */
   protected $repository;
+  public $user;
 
   /**
    * {@inheritdoc}
@@ -79,7 +80,7 @@ $results = $this->repository->load();
       if($results[$k]->status ==1)
       {
 		  
-		  $edit   = Url::fromUserInput('/update/'.$results[$k]->uid);
+		  $edit   = Url::fromUserInput('/update');
           $output[] = [
 		  'pid' => $results[$k]->pid,
 		  'uid' => $results[$k]->uid,
@@ -98,7 +99,7 @@ $results = $this->repository->load();
       if($results[$k]->status ==0)
       {
 		  
-		 $edit   = Url::fromUserInput('/update/'.$results[$k]->uid);
+		 $edit   = Url::fromUserInput('/update');
           $output[] = [
           'pid' => $results[$k]->pid,
 		  'uid' => $results[$k]->uid,
