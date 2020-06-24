@@ -1,0 +1,13 @@
+id: sub_categories
+label: sub_categories
+migration_group: migration_module
+source:
+  plugin: sub_categories
+  key: default
+destination:
+  plugin: entity:taxonomy_term
+process:
+  vid:
+    plugin: default_value
+    default_value: tags
+  name: name

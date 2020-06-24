@@ -1,0 +1,37 @@
+id: custom_artimages
+label: 'Custom article migration with external image files'
+source:
+  plugin: embedded_data
+  data_rows:
+    -
+      id: 1
+      title: 'Page 1 title'
+      file: 'E:/xampp/htdocs/files/img1.jpg'
+      file_title: 'Druplicon logo1'  
+    -
+      id: 2
+      title: 'Page 2 title'
+      file: 'E:/xampp/htdocs/files/img2.jpg'
+      file_title: 'Drupal logo2'
+    -
+      id: 3
+      title: 'Page 3 title'
+      file: 'E:/xampp/htdocs/files/img3.jpg'
+      file_title: 'Drupal logo3'
+  ids:
+    id:
+      type: integer
+  constants:
+    file_destination: 'public://images/'
+process:
+  nid: id
+  title: title
+  field_image:
+    plugin: image_import
+    source: file
+    destination: 'constants/file_destination'
+    title: file_title
+    alt: !title
+destination:
+  plugin: entity:node
+  default_bundle: article

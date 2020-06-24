@@ -1,0 +1,21 @@
+id: categories
+label: categories
+migration_group: migration_module
+source:
+  plugin: categories
+  key: default
+destination:
+  plugin: entity:node
+process:
+  type:
+    plugin: default_value
+    default_value: article
+  title: name
+  body: description
+  field_tags:
+    plugin: migration
+    migration: sub_categories
+    source: sub_categories
+migration_dependencies:
+  required:
+    - sub_categories

@@ -1,0 +1,18 @@
+id: custom_migration
+label: Import users from csv
+migration_group: migration_module
+source:
+  plugin: csv
+  path: 'E:/xampp/htdocs/files/Sample_user.csv'
+  header_row_count: 1
+  ids:
+    - ID
+process:
+  name: name
+  roles: roles
+  mail: email
+  field_last_name: lastname
+  field_first_name: firstname
+  status: Status
+destination:
+  plugin: entity:user

@@ -1,0 +1,27 @@
+id: user_csv_import
+label: Import users from csv
+migration_group: migration_module
+source:
+  plugin: 'csv'
+  path: 'E:/xampp/htdocs/files/Sample_user.csv'
+  delimiter: ','
+  # Field enclosure. Double quotation marks (") by default.
+  enclosure: '"'
+  # The row to be used as the CSV header (indexed from 0), 
+  # or null if there is no header row.
+  header_offset: 0
+  # The column(s) to use as a key. Each column specified will 
+  # create an index in the migration table and too many columns 
+  # may throw an index size error.
+  ids:
+    - ID
+process:
+  name: name
+  roles: roles
+  mail: email
+  roles: roles
+  field_last_name: lastname
+  field_first_name: firstname
+  status: Status
+destination:
+  plugin: entity:user

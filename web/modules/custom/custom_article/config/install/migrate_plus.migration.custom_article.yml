@@ -1,0 +1,29 @@
+id: custom_article
+label: Import articles from csv
+migration_group: migration_module
+source:
+  plugin: csv
+  path: 'E:/xampp/htdocs/files/Sample_article.csv'
+  header_row_count: 1
+  ids:
+    - id
+  fields:
+    0:
+      name: id
+      label: 'Unique Id'
+    1:
+      name: title
+      label: 'Title'
+    2:
+      name: body
+      label: 'Post body'
+    
+process:
+  title: title
+  body: body
+  type:
+    plugin: default_value
+    default_value: article
+
+destination:
+  plugin: entity:node
