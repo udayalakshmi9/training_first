@@ -47,86 +47,86 @@ class DatabaseFormController extends ControllerBase {
   /**
    * Render a list of entries in the database.
    */
-  public function entryList() {
-    $content = [];
+	public function entryList() {
+		$content = [];
 
-    $content['message'] = [
-      '#markup' => $this->t('Generate a list of all entries in the database. There is no filter in the query.'),
-    ];
+		$content['message'] = [
+		'#markup' => $this->t('Generate a list of all entries in the database. There is no filter in the query.'),
+		];
 
-    $rows = [];
-    $headers = [
-      $this->t('pid'),
-    
-      $this->t('firstname'),
-      $this->t('lastname'),
-      $this->t('bio'),
-	  $this->t('interest'), 
-	    $this->t('gender'),
+		$rows = [];
+		$headers = [
+		$this->t('pid'),
+
+		$this->t('firstname'),
+		$this->t('lastname'),
+		$this->t('bio'),
+		$this->t('interest'), 
+		$this->t('gender'),
 		$this->t('link'),
-    ];
+		];
 
-	$results = $this->repository->load();
+		$results = $this->repository->load();
 
-   
+
+
+
+		$k1=array();
+		$output=array();
 	
-	
-	$k1=array();
-   $output=array();
+		foreach($results as $k=>$data){
 
-    foreach($results as $k=>$data){
+			$term_name = \Drupal\taxonomy\Entity\Term::load($results[$k]->interest)->get('name')->value;
 
-      $term_name = \Drupal\taxonomy\Entity\Term::load($results[$k]->interest)->get('name')->value;
-	 
-      if($results[$k]->gender ==1)
-      {
-		  
-		  $edit   = Url::fromUserInput('/update');
-          $output[] = [
-		  'pid' => $results[$k]->pid,
-		  'lastname' => $results[$k]->lastname,
-          'firstname' => $results[$k]->firstname,     // 'userid' was the key used in the header
-          'bio' => $results[$k]->bio, // 'Username' was the key used in the header
-          'gender' => 'Male',
-		 
-          'interest' => $term_name,
-          \Drupal::l('Edit', $edit),
+			if($results[$k]->gender ==1)
+			{
+			  
+			  $edit   = Url::fromUserInput('/update');
+			  $output[] = [
+			  'pid' => $results[$k]->pid,
+			  'lastname' => $results[$k]->lastname,
+			  'firstname' => $results[$k]->firstname,     // 'userid' was the key used in the header
+			  'bio' => $results[$k]->bio, // 'Username' was the key used in the header
+			  'gender' => 'Male',
+			 
+			  'interest' => $term_name,
+			  \Drupal::l('Edit', $edit),
 
 
 
 
-         ];
-      }
-      if($results[$k]->gender ==0)
-      {
-		  
-		 $edit   = Url::fromUserInput('/update');
-          $output[] = [
-		  'pid' => $results[$k]->pid,
-		  'lastname' => $results[$k]->lastname,
-          'firstname' => $results[$k]->firstname,     // 'userid' was the key used in the header
-          'bio' => $results[$k]->bio, // 'Username' was the key used in the header
-          'gender' => 'Female',
-		  
-          'interest' => $term_name,
-          \Drupal::l('Edit', $edit),
+			 ];
+			}
+			if($results[$k]->gender ==0)
+			{
+			  
+			 $edit   = Url::fromUserInput('/update');
+			  $output[] = [
+			  'pid' => $results[$k]->pid,
+			  'lastname' => $results[$k]->lastname,
+			  'firstname' => $results[$k]->firstname,     // 'userid' was the key used in the header
+			  'bio' => $results[$k]->bio, // 'Username' was the key used in the header
+			  'gender' => 'Female',
+			  
+			  'interest' => $term_name,
+			  \Drupal::l('Edit', $edit),
 
 
 
 
-         ];
-      }
+			 ];
+			}
 
 
 
 
 
-        array_push($k1,$output);
-      //display data in site
+			array_push($k1,$output);
+			//display data in site
 
-    }
+		}
 
-    $content['table'] = [
+		$content['table'] = [
               '#type' => 'table',
               '#header' => $headers,
               '#rows' => $output,
@@ -141,9 +141,9 @@ class DatabaseFormController extends ControllerBase {
 		  'method' => 'GET'
 		  ]
 		  );
-  }
-  public function userlist()
-  {
+	}
+	public function userlist()
+	{
 	 /* $urls = 'http://localhost/drupal/oauth/token';
 		$method1 = 'POST';
 		$options1 = [
