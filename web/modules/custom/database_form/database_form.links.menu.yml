@@ -18,3 +18,8 @@ database_form.update:
   route_name: database_form.update
   weight: 2
   parent: database_form.description
+database_form.lists:
+  title: Lists
+  route_name: database_form.lists
+  weight: 0
+  parent: database_form.description

@@ -13,7 +13,13 @@ database_form.list:
     _controller: '\Drupal\database_form\Controller\DatabaseFormController::entryList'
   requirements:
     _permission: 'access content'
-
+database_form.lists:
+  path: '/api/v1/userlist'
+  defaults:
+    _title: 'List'
+    _controller: '\Drupal\database_form\Controller\DatabaseFormController::userlist'
+  requirements:
+    _permission: 'access content'
 database_form.add:
   path: '/add'
   defaults:

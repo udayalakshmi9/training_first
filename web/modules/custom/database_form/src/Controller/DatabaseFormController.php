@@ -142,6 +142,47 @@ class DatabaseFormController extends ControllerBase {
 		  ]
 		  );
   }
+  public function userlist()
+  {
+	 /* $urls = 'http://localhost/drupal/oauth/token';
+		$method1 = 'POST';
+		$options1 = [
+		'grant_type' => 'password',
+		'client_id'=>'d218cb6d-bd2f-4c68-93a2-36d966abc220',
+		'client_secret'=>'12345',
+		'username'=>'udaya',
+		'password'=>'12345',
+		
+
+		];
+		
+		
+		$clients = \Drupal::httpClient();
+
+		$response1 = $clients->request($method1, $urls, $options1);
+		print_r($response1);exit;*/
+
+		
+		$token='Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFkMTQ5NmFiM2VmZmNlYjMzMmRmMjkzOGJjNDllY2YzM2M0MzRhZDZhNDlhNDRlMWFlMzVlNmIyMjZkODE5NTgzYzRmMGM2YjVkMWMxYmJhIn0.eyJhdWQiOiJkMjE4Y2I2ZC1iZDJmLTRjNjgtOTNhMi0zNmQ5NjZhYmMyMjAiLCJqdGkiOiJhZDE0OTZhYjNlZmZjZWIzMzJkZjI5MzhiYzQ5ZWNmMzNjNDM0YWQ2YTQ5YTQ0ZTFhZTM1ZTZiMjI2ZDgxOTU4M2M0ZjBjNmI1ZDFjMWJiYSIsImlhdCI6MTU5MzMzNzU1NiwibmJmIjoxNTkzMzM3NTU2LCJleHAiOjE1OTMzNDA1NTUsInN1YiI6IjMiLCJzY29wZXMiOlsiYXV0aGVudGljYXRlZCIsImNsaWVudCJdfQ.UhwGqZYv5vKgZb6Js5FADPPLFQFJ8QcJ6sAwDlZy3u4AuWIb75L7uKdpHHvtSZmg3AWOP-Ngcx13ko_dfpHcYqO3SpsV-IpzDgWmuqPvX5Oaz5epIZ308bSHogOSSFEUrdkj4UQB9I1jFPYuEN_5dJgMnhWkjeUAk7DOQa3jWeSMkSVedhxJlLZz6FV7MeRxLr5pZMUQ2HIspEnb5eUGcGNIvVGaXsLOvaDEKaaRU7aL2I5-FH-SLXyLh0PG9fe8L_9X2WeZ_TEDuZnmbr4FXa0NOVlGiZxKebTL__c1RENZTKfgDeyJ6Ya_GnN6uyaQGHFrFdZamuXUOMmPKdnTaA';
+		$url = 'http://localhost/drupal/dashboardlist';
+		$method = 'GET';
+		$options = [
+		'access_token' => $token
+
+		];
+
+		$client = \Drupal::httpClient();
+
+		$response = $client->request($method, $url, $options);
+
+		//print_r($response);
+		$code = $response->getStatusCode();
+
+		if ($code == 200) {
+		$body = $response->getBody()->getContents();
+		}
+		return $response;
+  }
   //}
 
   /**
