@@ -1,0 +1,12 @@
+# This declares the plugin manager to the service container. For background
+# information on the service container, see https://www.drupal.org/node/2133171.
+# Changes here require that the cache be cleared in order to have Drupal notice
+# them.
+services:
+  database_form.repository:
+    class: Drupal\database_form\DatabaseFormRepository
+    arguments: ['@database', '@string_translation', '@messenger']
+  database_form.event_subscriber_logger:
+    class: Drupal\database_form\EventSubscriber\LoggerEventSubScriber
+    tags:
+      - { name: 'event_subscriber' }

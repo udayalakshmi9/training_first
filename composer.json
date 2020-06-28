@@ -24,6 +24,7 @@
         "drupal/core": "^8.8.0",
         "drupal/core-composer-scaffold": "^8.8.0",
         "drupal/migrate_file": "^1.1",
+        "drupal/simple_oauth": "^4.5",
         "drush/drush": "^9.7.1 | ^10.0.0",
         "guzzlehttp/guzzle": "^6.5",
         "league/csv": "^9.6",

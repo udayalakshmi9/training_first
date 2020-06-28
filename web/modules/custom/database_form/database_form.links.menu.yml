@@ -1,0 +1,20 @@
+database_form.description:
+  title: DBTNG Example
+  route_name: database_form.generate_entry_list
+  expanded: TRUE
+
+database_form.list:
+  title: List
+  route_name: database_form.list
+  weight: 0
+  parent: database_student.description
+database_form.add:
+  title: Add entry
+  route_name: database_form.add
+  weight: 1
+  parent: database_form.description
+database_form.update:
+  title: Update entry
+  route_name: database_form.update
+  weight: 2
+  parent: database_form.description

@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the dbtng_example module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Creates some default entries on this module custom table.
+ *
+ * @see hook_install()
+ *
+ * @ingroup dbtng_example
+ */
+function database_form_install() {
+  // Insert some example data into our schema.
+  $entries = 
+   array(
+      'firstname' => 'udayasss',
+      'lastname' => 'lakshmi',
+      'bio'=>'udayaprofile',
+	  'gender'=>'0',
+	  'interest'=>'1'
+	  
+    
+  );
+
+  $connection = \Drupal::database();
+  //foreach ($entries as $entry) {
+    $connection->insert('taxonomyform')->fields($entries)->execute();
+ // }
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup dbtng_example
+ */
+function database_form_schema() {
+  $schema['taxonomyform'] = [
+    'description' => 'Stores example person entries for demonstration purposes.',
+    'fields' => [
+      'pid' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique person ID.',
+      ],
+     
+      'firstname' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the person.',
+      ],
+	  'lastname' => [
+        'type' => 'varchar',
+		'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "Creator user's lastname",
+      ],
+      'bio' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'bio for the person.',
+      ],
+	  'gender' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'gender for the person.',
+      ],
+      'interest' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => "taxonomy",
+      ],
+    ],
+    'primary key' => ['pid'],
+    'indexes' => [
+      'firstname' => ['firstname'],
+      'lastname' => ['lastname'],
+      'bio' => ['bio'],
+	  'gender' => ['gender'],
+	 
+	  'interset' => ['interest'],
+    ],
+  ];
+
+  return $schema;
+}

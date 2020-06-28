@@ -1,0 +1,6 @@
+configuration_module.config:
+  path: '/config_list'
+  defaults: 
+    _controller: '\Drupal\configuration_module\Controller\ConfigurationModuleController::content' 
+  requirements: 
+    _permission: 'access content'

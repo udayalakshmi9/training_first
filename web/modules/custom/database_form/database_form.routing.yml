@@ -1,0 +1,32 @@
+database_form.generate_entry_list:
+  path: '/list'
+  defaults:
+    _title: 'Dashboard of list'
+    _controller: '\Drupal\database_form\Controller\DatabaseFormController::entryList'
+  requirements:
+    _permission: 'access content'
+
+database_form.list:
+  path: '/dashboardlist'
+  defaults:
+    _title: 'List'
+    _controller: '\Drupal\database_form\Controller\DatabaseFormController::entryList'
+  requirements:
+    _permission: 'access content'
+
+database_form.add:
+  path: '/add'
+  defaults:
+    _title: 'Add entry'
+    _form: '\Drupal\database_form\Form\DatabaseFormAddForm'
+  requirements:
+    _permission: 'access content'
+
+database_form.update:
+  path: '/update'
+  defaults:
+    _title: 'Update entry'
+    _form: '\Drupal\database_form\Form\DatabaseFormUpdateForm'
+  requirements:
+    _permission: 'access content'
+
